@@ -1,0 +1,66 @@
+<html>
+
+  <head>
+    <title>Backbone Binding</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../vendor/jquery.js"></script>
+    <script src="../vendor/underscore.js" type="text/javascript" ></script>
+    <script src="../vendor/handlebars.js" type="text/javascript" ></script>
+    <script src="../vendor/backbone.js" type="text/javascript" ></script>
+    <script src="../backbone-binding-0.1.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript" ></script>
+  </head>
+
+  <body>
+
+    <div id="messages">
+      <button class="create-one">Create Message</button>
+      <button class="destroy-all">Destroy All</button>
+      <ul>
+        <script id="message-template" type="text/x-handlebars-template">
+
+          <div id="content-binding" class="example">
+            <span {{bind html='type'}}></span>
+          </div>
+
+          <div id="attribute-binding" class="example">
+            <a {{bind href='url'}}>
+              <span {{bind html='body'}}></span>
+            </a>
+          </div>
+
+          <div id="input-binding" class="example">
+            <input {{bind val='body'}} />
+          </div>
+
+          <div id="checkbox-binding" class="example">
+            <input type="checkbox" {{bind checked='flagged'}} />
+            <span {{bind html='flag'}}></span>
+          </div>
+
+          <div id="class-binding" class="example">
+            <div class="notification" {{bind class='priority'}}>
+              <span {{bind html='priority'}}></span> priority
+            </div>
+          </div>
+
+          <div id="select-binding" class="example">
+            <select {{bind val='priority'}}>
+              <option val='low'>low</option>
+              <option val='high'>high</option>
+            </select>
+          </div>
+
+          <div id="manual-binding" class="example">
+            <span class="created"></span>
+          </div>
+
+          <button class="reset">Reset</button>
+          <button class="destroy">Destroy</button>
+        </script>
+      </ul>
+    </div>
+
+  </body>
+
+</html>

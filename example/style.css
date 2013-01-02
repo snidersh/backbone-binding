@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
+}
+
+button {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+#messages {
+  width: 1000px;
+  margin: 10px auto 0px auto;
+  padding: 10px;
+}
+
+#messages ul {
+  list-style-type: none;
+  background-color: #EEE;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#messages ul li {
+  margin: 0px 0px 10px 0px;
+  background-color: #FFF;
+}
+
+.message {
+  overflow: auto;
+}
+
+.example {
+  float: left;
+  height: 24px;
+  border: 1px solid #DDD;
+  margin-right: 2px;
+  text-align: center;
+  padding: 5px 2px 2px 2px;
+}
+
+.notification {
+}
+
+.low {
+  color: green;
+}
+
+.high {
+  color: red;
+}
+
+#content-binding {
+  width: 80px;;
+}
+
+#attribute-binding {
+  width: 120px;
+}
+
+#input-binding {
+  width: 140px;
+}
+
+#checkbox-binding {
+  width: 50px;
+}
+
+#class-binding {
+  width: 80px;
+}
+
+#select-binding {
+  width: 60px;
+}
+
+#manual-binding {
+}
