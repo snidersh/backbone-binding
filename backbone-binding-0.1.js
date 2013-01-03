@@ -7,11 +7,6 @@
 
 !function($, window, undefined) {
 
-  // jQuery custom binding selector.
-  $.expr[':'].binding = function(elem, i, match, array) {
-    return ($(elem).prop('binding') == match[3]);
-  };
-
   // Handlebars helper to translate binding expressions.
   if (typeof Handlebars != 'undefined') {
     Handlebars.registerHelper('bind', function(data) {
@@ -52,7 +47,7 @@
         previous: undefined
       }
       this._bindings.push(binding);
-      el.prop('binding', binding.index);
+      el.addClass('x-binding-' + binding.index);
       this.listenTo(this.model, 'change:' + binding.attr, function() { this._updateBoundView(binding.index) });
       if (_.contains(['input', 'textarea', 'select'], el.prop('tagName').toLowerCase())) {
         el.on('change', $.proxy(this._updateBoundModel, this));
@@ -62,7 +57,8 @@
     },
     unbindAttribute : function(binding) {
       this.stopListening(this.model, 'change:' + binding.attr);
-      this.$(':binding(' + binding.index + ')').off('change');
+      this.$('.x-binding-' + binding.index).off('change');
+      this.$el.removeClass('x-binding-' + binding.index);
       this._bindings.remove(binding);
     },
 
@@ -75,7 +71,7 @@
           binding.previous = binding.value;
           binding.value = val;
         }
-        var el = this.$(':binding(' + binding.index + ')');
+        var el = this.$('.x-binding-' + binding.index);
         this._setBoundViewValue(el, binding);
       }
     },
@@ -108,7 +104,7 @@
     // Handles updating model.
     _updateBoundModel : function(e) {
       var el = $(e.target);
-      var index = el.prop('binding');
+      var index = el.attr('class').match(/x-binding-(\d+)/)[1];
       var binding = this._bindings[index];
       if (typeof binding != 'undefined') {
         var val = this._getBoundModelValue(el, binding);
